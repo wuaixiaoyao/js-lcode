@@ -2,7 +2,7 @@
  * @Author: wuaixiaoyao 
  * @Date: 2020-03-13 15:35:05 
  * @Last Modified by: wuaixiaoyao
- * @Last Modified time: 2020-03-13 17:22:21
+ * @Last Modified time: 2020-03-28 18:46:38
  */
 
 var arr = [0, 1, 0, 3, 12]
@@ -38,6 +38,8 @@ function moveZeroes1(nums) {
 
   })
   console.log('----nums----', nums)
+  
+
 }
 
 
@@ -95,3 +97,24 @@ function moveZeroes3(nums) {
 }
 
 moveZeroes3(arr)
+
+
+process.nextTick(function foo() {
+  console.log('执行 foo')
+  // process 递归会陷入死循环  递归调用process.nextTick，将会没完没了，主线程根本不会去读取"事件队列"！
+  //process.nextTick(foo);
+
+
+  
+
+});
+
+/**
+ * es5 会存在变量声明提升
+ */
+a = test  + 100;
+console.log('test', test)
+var test = 200;
+console.log('aaa', a)
+
+

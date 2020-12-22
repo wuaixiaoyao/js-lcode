@@ -96,9 +96,3 @@ console.log('----------------')
 console.log(midObj[0][0])
 
 console.log('----------------')
-
-
-var info = () => {
-  console.log(this.age, this)
-}
-info()

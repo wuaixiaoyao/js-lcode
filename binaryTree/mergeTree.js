@@ -5,6 +5,7 @@
  * @Last Modified time: 2020-02-25 10:38:34
  */
 
+
 var mergeTrees1 = function(t1, t2) {
   if (t1 instanceof Array && t2 instanceof Array) {
       let merTree = [];
@@ -72,6 +73,8 @@ var mergeTrees = function (t1, t2) {
   return tree
 
 }
+
+
 var fs = require('fs');
 const appDirectory = fs.realpathSync(process.cwd());
 
