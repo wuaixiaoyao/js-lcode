@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body>
+    <script>
+        function * foo(){
+            console.log(234);
+            yield '34'
+            console.log(666)
+        }
+
+        var g = foo();
+        var f = g.next();
+        console.log(f)
+        g.next();
+        
+
+
+        function * f1(){
+            console.log(11)
+            yield 22
+            console.log(33)
+            yield 444
+            console.log(55)
+        }
+
+        var g = f1(); // 11 
+        g.next();
+        console.log(66) 
+        g.next()
+        console.log(77);
+        g.next()
+
+
+
+    </script>
+</body>
+</html>
