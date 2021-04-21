@@ -1,9 +1,10 @@
 /*
  * @Author: wuaixiaoyao 
  * @Date: 2020-04-20 19:32:26 
- * @Last Modified by:   wuaixiaoyao 
- * @Last Modified time: 2020-04-20 19:32:26 
+ * @Last Modified by: wuaixiaoyao
+ * @Last Modified time: 2021-03-08 21:57:01
  */
+
 //两数之和
 
 var twoSum = function(nums, target) {
@@ -17,3 +18,7 @@ var twoSum = function(nums, target) {
   }
   return [];
 };
+
+console.log('twoSum:', twoSum([2], [4]));
+
+

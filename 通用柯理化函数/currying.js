@@ -46,6 +46,6 @@ function sum(a, b, c, d) {
   return a + b + c + d
 }
 const curriedSum = curry(sum)
-console.log(curriedSum(1, 2, 3,4))
-console.log(curriedSum(1)(2, 3,4))
-console.log(curriedSum(1)(2)(3))
+console.log(curriedSum(1, 2, 3, 4))
+console.log(curriedSum(1)(2, 3, 4))
+console.log(curriedSum(1)(2)(3)(4))
