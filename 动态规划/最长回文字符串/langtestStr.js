@@ -1,4 +1,4 @@
-// 双指针
+// 双指针  最长回文字符串
 var longestPalindrome = function (s) {
   let resStr = "";
   // 扫两遍，第一遍，假设结果是个奇数回文串，则最长回文串在这个循环里找到
@@ -36,3 +36,17 @@ var longestPalindrome = function (s) {
 console.log(longestPalindrome("ababad"));
 console.log(longestPalindrome("cbbdff"));
 console.log(longestPalindrome("fabcdedcbag"));
+
+// 移除重复项 快慢指针
+function removeDuplicates(nums) {
+  let i = 1;
+
+  for (let j = 1; i < nums.length; j++) {
+    if (nums[j] != nums[j - 1]) {
+      nums[i] = nums[j];
+      i++;
+    }
+  }
+
+  return i;
+}

@@ -1,25 +1,57 @@
 /*
- * @Author: wuaixiaoyao 
- * @Date: 2020-03-13 15:35:05 
+ * @Author: wuaixiaoyao
+ * @Date: 2020-03-13 15:35:05
  * @Last Modified by: wuaixiaoyao
  * @Last Modified time: 2021-03-08 22:13:43
  */
 
-var arr = [0, 1, 0, 3, 12]
+var arr = [0, 1, 0, 3, 12];
+
+/**
+ * 移动零
+ * @param nums 
+ * 双指针一次遍历
+思路：定义left、right指针，right从左往右移动，遇上非0元素，交换left和right对应的元素，交换之后left++
+
+复杂度：时间复杂度O(n)，空间复杂度O(1)
+ */
+var moveZeroes = function (nums) {
+  let left = 0,
+    right = 0;
+  while (right < nums.length) {
+    if (nums[right] !== 0) {
+      // 遇上非0元素，交换left和right对应的元素 ** left 相当于新的数组下标 left 存放所有非0  **
+      swap(nums, left, right);
+      left++; //交换之后left++
+    }
+    right++;
+  }
+};
+
+// 交换位置
+function swap(nums, l, r) {
+  let temp = nums[r];
+  nums[r] = nums[l];
+  nums[l] = temp;
+}
+
+const nums1 = [1, 0, 2, 3, 0, 5];
+moveZeroes(nums1);
+console.log("nums1", nums1);
 
 /**
  * 移动零 必须在原数组上操作
- * @param {*} arr 
+ * @param {*} arr
  */
 var moveZeroes = function (nums) {
   //
   var res = [];
   var zeroArr = [];
-  nums.forEach(val => {
+  nums.forEach((val) => {
     if (val === 0) {
       zeroArr.push(0);
     } else {
-      res.push(val)
+      res.push(val);
     }
   });
   return res.concat(zeroArr);
@@ -30,89 +62,74 @@ function moveZeroes1(nums) {
   nums.forEach((num, index) => {
     //
     i++;
-    console.log(i)
+    console.log(i);
     if (num === 0) {
-      nums.splice(index, 1)
-      nums.push(0)
+      nums.splice(index, 1);
+      nums.push(0);
     }
-
-  })
-  console.log('----nums----', nums)
-  
-
+  });
+  console.log("----nums----", nums);
 }
 
-
-
-
-console.log('-------moveZeroes-------')
-console.log(moveZeroes(arr))
-
+console.log("-------moveZeroes-------");
+console.log(moveZeroes(arr));
 
 //console.log('-------moveZeroes1-------')
 // console.log(moveZeroes1(arr))
 /**
- * 
- * @param {*} nums 
+ *
+ * @param {*} nums
  */
 function moveZeroes2(nums) {
-  console.log('-------moveZeroes2-------', nums)
+  console.log("-------moveZeroes2-------", nums);
   var queue = [...nums];
   var index = 0;
   var zeroArr = [];
   while (queue.length) {
     //取出第一个， 先进先出
     var num = queue.shift();
-    console.log('----num----', num)
+    console.log("----num----", num);
 
     if (num === 0) {
-      nums.splice(index, 1)
-      console.log('----此时nums----', nums)
-      nums.push(0)
+      nums.splice(index, 1);
+      console.log("----此时nums----", nums);
+      nums.push(0);
     } else {
-      index++
-    }
-    
-  } 
-  
-  console.log('-------moveZeroes2结果-------', nums)
-
-
-
-}
-moveZeroes2(arr)
-
-
-function moveZeroes3(nums) {
-  let temp = 0
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[temp] === 0) {
-      nums.splice(temp, 1)
-      nums[nums.length] = 0;
-    } else {
-      temp++
+      index++;
     }
   }
-  console.log('----------------------3---------', nums)
+
+  console.log("-------moveZeroes2结果-------", nums);
+}
+moveZeroes2(arr);
+
+function moveZeroes3(nums) {
+  let temp = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[temp] === 0) {
+      nums.splice(temp, 1);
+      nums[nums.length] = 0;
+    } else {
+      temp++;
+    }
+  }
+  console.log("----------------------3---------", nums);
 }
 
-moveZeroes3(arr)
-
+moveZeroes3(arr);
 
 // 异步执行
 process.nextTick(function foo() {
-  console.log('执行foo')
+  console.log("执行foo");
   // process 递归会陷入死循环  递归调用process.nextTick，将会没完没了，主线程根本不会去读取"事件队列"！
-  //process.nextTick(foo);
+  process.nextTick(foo);
 });
 
 /**
  * es5 会存在变量声明提升
  */
-a = test  + 100;
+a = test + 100;
 var test = 200;
-console.log('test:', test)
-console.log('aaa:', a)
-console.log('sum:', test + 100)
-
-
+console.log("test:", test);
+console.log("aaa:", a);
+console.log("sum:", test + 100);
