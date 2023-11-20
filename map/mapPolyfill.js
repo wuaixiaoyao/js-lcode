@@ -28,27 +28,10 @@ class Map {
  * ES6的Map的键可以是任意的数据结构，并且不重复。
  * 那么map的底层原理是啥呢
  * Map利用链表，hash的思想来实现
- *
  */
-
-// 链表结构
-const oTempBucket = {
-  key: "obj1",
-  value: "obj1",
-  next: {
-    key: "obj11",
-    value: "obj11",
-    next: {
-      key: "obj111",
-      value: "obj111",
-      next: null,
-    },
-  },
-};
 
 function myMap() {
   this.bucketLength = 8;
-  // 初始化bucket 链表 数组
   this.init();
 }
 
@@ -97,18 +80,16 @@ myMap.prototype.makeHash = function (key) {
 myMap.prototype.set = function (key, value) {
   let hash = this.makeHash(key);
   let oTempBucket = this.bucket[hash];
-  // oTempBucket为链表结构， 如果oTempBucket.next 存在，则继续循环
+  // 如果存在当前oTempBucket  链表结构
   while (oTempBucket.next) {
-    // 如果key 为复杂数据类型 可判断引用相同
     if (oTempBucket.next.key == key) {
       oTempBucket.next.value = value;
       return;
     } else {
-      // 截取next节点 执行循环
+      // 截取为next节点
       oTempBucket = oTempBucket.next;
     }
   }
-  // 往最后的节点添加
   oTempBucket.next = {
     key: key,
     value: value,
@@ -182,15 +163,3 @@ console.log("key: ", a.get(key));
 
 console.log("key2: ", a.get(key2));
 console.log("key3: ", a.get(key3));
-
-function whileTest1() {
-  let i = 10;
-  while (true) {
-    console.log("i:", i);
-    if (i < 4) {
-      return;
-    }
-    i--;
-  }
-  console.log("end");
-}

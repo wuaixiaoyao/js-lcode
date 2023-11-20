@@ -10,7 +10,7 @@
 var myTree = {
   val: 6,
   left: {
-    val: 0,
+    val: 5,
     left: {
       val: 4,
       left: {
@@ -44,13 +44,13 @@ var myTree = {
   },
 };
 
-// ================================  广度优先遍历 ===============================
+// 广度优先遍历
 // 思路是利用队列，从根节点开始，依次将左节点、右节点push进数组。队列后进后出
 function bfs(tree) {
   var queue = [tree];
   var res = [];
   var count = 0;
-  while (queue[count]) {
+  while (queue[count] && queue[count].val) {
     // 直到队列中某值不存在为止
     // 推入值到res
     res.push(queue[count].val);
@@ -69,29 +69,15 @@ function bfs(tree) {
   }
   return res;
 }
-
-function bfs1(tree) {
-  let queue = [tree];
-  let res = [];
-  // 摘取第一个
-  while ((node = queue.shift())) {
-    const { val, left, right } = node;
-    res.push(val);
-    left && queue.push(left);
-    right && queue.push(right);
-  }
-  return res;
-}
 console.log("--------广度优先------------");
 console.log(bfs(myTree));
-console.log("bfs1", bfs1(myTree));
 
-// ================================== 深度优先遍历 ============================== //
+//深度优先遍历
 
 // 递归版本
 var res = [];
 function dfs(tree) {
-  if (!!tree.val || tree.val === 0) {
+  if (tree.val) {
     res.push(tree.val);
     //递归子节点
     if (tree.left) {
@@ -106,15 +92,14 @@ function dfs(tree) {
 
 console.log("--------递归 深度优先------------");
 console.log(dfs(myTree));
-
 // 栈版本, 把各级节点都放入栈中， 然后一个个出栈处理
-// 后进先出
+//后进先出
 function dfsStack(tree) {
   //
   var stack = [tree];
   var res = [];
   while (stack.length) {
-    // 取出最后节点，因为后进 所以顺序可能是乱的，每次只出一个
+    //取出最后节点，因为后进 所以顺序可能是乱的，每次只出一个
     var node = stack.pop();
     // 把val fn
     res.push(node.val);
@@ -130,7 +115,7 @@ function dfsStack(tree) {
   return res;
 }
 
-console.log("------深度优先 栈版本-------");
+console.log("-------------");
 console.log(dfsStack(myTree));
 
 function test(num) {

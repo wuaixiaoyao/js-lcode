@@ -8,38 +8,6 @@
 var arr = [0, 1, 0, 3, 12];
 
 /**
- * 移动零
- * @param nums 
- * 双指针一次遍历
-思路：定义left、right指针，right从左往右移动，遇上非0元素，交换left和right对应的元素，交换之后left++
-
-复杂度：时间复杂度O(n)，空间复杂度O(1)
- */
-var moveZeroes = function (nums) {
-  let left = 0,
-    right = 0;
-  while (right < nums.length) {
-    if (nums[right] !== 0) {
-      // 遇上非0元素，交换left和right对应的元素 ** left 相当于新的数组下标 left 存放所有非0  **
-      swap(nums, left, right);
-      left++; //交换之后left++
-    }
-    right++;
-  }
-};
-
-// 交换位置
-function swap(nums, l, r) {
-  let temp = nums[r];
-  nums[r] = nums[l];
-  nums[l] = temp;
-}
-
-const nums1 = [1, 0, 2, 3, 0, 5];
-moveZeroes(nums1);
-console.log("nums1", nums1);
-
-/**
  * 移动零 必须在原数组上操作
  * @param {*} arr
  */
@@ -122,7 +90,7 @@ moveZeroes3(arr);
 process.nextTick(function foo() {
   console.log("执行foo");
   // process 递归会陷入死循环  递归调用process.nextTick，将会没完没了，主线程根本不会去读取"事件队列"！
-  process.nextTick(foo);
+  //process.nextTick(foo);
 });
 
 /**

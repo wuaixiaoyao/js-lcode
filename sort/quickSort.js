@@ -27,15 +27,3 @@ function quikSort(arr) {
   });
   return [...quikSort(leftArr), interItem, ...quikSort(rightArr)];
 }
-
-var isPalindrome = function (str) {
-  str = str.replace(/[^a-z0-9A-Z]/g, "").replace(/\s/g, "").toLowerCase();
-
-  let i =0, j = str.length -1;
-  while(i < j) {
-    if(str[i] != str[j]) {
-      return false;
-    }
-    i++;
-  }
-};
